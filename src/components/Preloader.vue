@@ -1,10 +1,10 @@
 <!-- <div class="pipi fixed-top"></div> -->
 
 <script>
-export default {};
+export default {}
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .pipi {
   position: fixed;
   width: 100%;

@@ -1,6 +1,5 @@
 <template>
   <div class="product">
-    {{ testing12 }}
     <b-container
       fluid
       class="container-color px-0"
@@ -39,22 +38,17 @@
   </div>
 </template>
 <script>
-import Overview from '@/components/product/Overview.vue';
-import Details from '@/components/product/Details.vue';
-import Specification from '@/components/product/Specification.vue';
-import Feedback from '@/components/product/Feedback.vue';
-import Info from '@/components/product/Info.vue';
-import { mapState } from 'vuex';
-import NProgress from 'nprogress';
-import store from '@/store/';
+import Overview from '@/components/product/Overview.vue'
+import Details from '@/components/product/Details.vue'
+import Specification from '@/components/product/Specification.vue'
+import Feedback from '@/components/product/Feedback.vue'
+import Info from '@/components/product/Info.vue'
 export default {
-  props: ['id'],
-  beforeRouteEnter(routeTo, routeFrom, next) {
-    NProgress.start();
-    store.dispatch('product/fetchProduct', routeTo.params.id).then(() => {
-      NProgress.done();
-      next();
-    });
+  props: {
+    product: {
+      type: Array,
+      required: true
+    }
   },
   name: 'product',
   components: {
@@ -62,23 +56,14 @@ export default {
     Details,
     Specification,
     Feedback,
-    Info,
+    Info
   },
   data() {
     return {
-      ProductId: null,
-    };
-  },
-  methods: {
-    // ...mapActions('product', ['fetchProduct'])
-  },
-  computed: {
-    ...mapState({ product: (state) => state.product.product }),
-  },
-  // created() {
-  //   this.$store.dispatch('product/fetchProduct', this.id)
-  // }
-};
+      ProductId: null
+    }
+  }
+}
 </script>
 <style scoped>
 .product {
