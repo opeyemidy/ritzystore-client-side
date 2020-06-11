@@ -74,13 +74,11 @@
       <div class="mt-3">
         <b-button block variant="danger" class="py-2">
           <div style="line-height: 24px;">
-            <font-awesome-layers
+            <i
+              class="fas fa-shopping-cart float-left"
               full-width
-              class="float-left"
               style="font-size: 1.3em;"
-            >
-              <font-awesome-icon icon="shopping-cart" />
-            </font-awesome-layers>
+            ></i>
             <div style="">
               ADD TO CART
             </div>

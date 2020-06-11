@@ -25,18 +25,16 @@ export const actions = {
         console.log('there is an error', error)
       })
   },
-  fetchProduct({ commit }, id) {
+  fetchProduct({ commit, getters }, id) {
     const product = getters.getProductById(id)
     if (product) {
       commit('SET_PRODUCT', product)
+      return product
     } else {
-      EventService.getProduct(id)
-        .then(response => {
-          commit('SET_PRODUCT', response.data)
-        })
-        .catch(error => {
-          console.log('error', error)
-        })
+      return EventService.getProduct(id).then(response => {
+        commit('SET_PRODUCT', response.data)
+        return response.data
+      })
     }
   }
 }

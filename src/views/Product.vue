@@ -1,6 +1,5 @@
 <template>
   <div class="product">
-    {{ testing12 }}
     <b-container
       fluid
       class="container-color px-0"
@@ -44,17 +43,12 @@ import Details from '@/components/product/Details.vue'
 import Specification from '@/components/product/Specification.vue'
 import Feedback from '@/components/product/Feedback.vue'
 import Info from '@/components/product/Info.vue'
-import { mapState } from 'vuex'
-import NProgress from 'nprogress'
-import store from '@/store/'
 export default {
-  props: ['id'],
-  beforeRouteEnter(routeTo, routeFrom, next) {
-    NProgress.start()
-    store.dispatch('product/fetchProduct', routeTo.params.id).then(() => {
-      NProgress.done()
-      next()
-    })
+  props: {
+    product: {
+      type: Array,
+      required: true
+    }
   },
   name: 'product',
   components: {
@@ -68,16 +62,7 @@ export default {
     return {
       ProductId: null
     }
-  },
-  methods: {
-    // ...mapActions('product', ['fetchProduct'])
-  },
-  computed: {
-    ...mapState({ product: state => state.product.product })
   }
-  // created() {
-  //   this.$store.dispatch('product/fetchProduct', this.id)
-  // }
 }
 </script>
 <style scoped>

@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-    <Preloader />
     <Navbar />
     <router-view />
     <Footer />
@@ -18,8 +17,7 @@ export default {
   },
   components: {
     Navbar,
-    Footer,
-    Preloader
+    Footer
   }
 }
 </script>
