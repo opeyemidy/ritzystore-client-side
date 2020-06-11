@@ -1,5 +1,9 @@
 <template>
   <div class="product">
+<<<<<<< HEAD
+=======
+    {{ testing12 }}
+>>>>>>> 65f1cd05c7db4cf8b60fe0bf3929b94d96e6da7b
     <b-container
       fluid
       class="container-color px-0"
@@ -38,6 +42,7 @@
   </div>
 </template>
 <script>
+<<<<<<< HEAD
 import Overview from '@/components/product/Overview.vue'
 import Details from '@/components/product/Details.vue'
 import Specification from '@/components/product/Specification.vue'
@@ -49,6 +54,24 @@ export default {
       type: Array,
       required: true
     }
+=======
+import Overview from '@/components/product/Overview.vue';
+import Details from '@/components/product/Details.vue';
+import Specification from '@/components/product/Specification.vue';
+import Feedback from '@/components/product/Feedback.vue';
+import Info from '@/components/product/Info.vue';
+import { mapState } from 'vuex';
+import NProgress from 'nprogress';
+import store from '@/store/';
+export default {
+  props: ['id'],
+  beforeRouteEnter(routeTo, routeFrom, next) {
+    NProgress.start();
+    store.dispatch('product/fetchProduct', routeTo.params.id).then(() => {
+      NProgress.done();
+      next();
+    });
+>>>>>>> 65f1cd05c7db4cf8b60fe0bf3929b94d96e6da7b
   },
   name: 'product',
   components: {
@@ -56,6 +79,7 @@ export default {
     Details,
     Specification,
     Feedback,
+<<<<<<< HEAD
     Info
   },
   data() {
@@ -64,6 +88,25 @@ export default {
     }
   }
 }
+=======
+    Info,
+  },
+  data() {
+    return {
+      ProductId: null,
+    };
+  },
+  methods: {
+    // ...mapActions('product', ['fetchProduct'])
+  },
+  computed: {
+    ...mapState({ product: (state) => state.product.product }),
+  },
+  // created() {
+  //   this.$store.dispatch('product/fetchProduct', this.id)
+  // }
+};
+>>>>>>> 65f1cd05c7db4cf8b60fe0bf3929b94d96e6da7b
 </script>
 <style scoped>
 .product {
